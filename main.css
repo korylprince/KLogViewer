@@ -1,0 +1,110 @@
+@charset "utf-8";
+
+body {
+    text-align: center;
+    background-color: #f8f8f8;
+}
+
+#wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -200px;
+    margin-top: -200px;
+}
+
+#header {
+    text-align: center;
+    font-size: 24pt;
+    border: 1px solid #ddd;
+    color: #0073ea;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#loginboxwrapper, #errorboxwrapper {
+    border: 1px solid #ddd;
+    background-color: #eee;
+    margin-top: -1px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#errorboxwrapper {
+    display: inline-block;
+    width: auto;
+}
+
+#loginbox {
+    text-align: center;
+    padding: 5px;
+    margin: 15px;
+}
+
+#loginbox input, #loginbox button {
+    clear: both;
+    margin: 3px;
+}
+
+#errorbox {
+    padding: 5px;
+    margin: 15px;
+    display: inline-block;
+    font-size: 12pt;
+}
+
+#topform {
+    height: 35px;
+    width: 100%;
+    border-bottom: 1px solid #000;
+}
+
+#logselect {
+    float: left;
+}
+
+#searchsubmit, #lines {
+    margin-right: 10px;
+}
+
+#logoutbutton {
+    float: right;
+}
+
+#content {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    overflow: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+#linenumber, #searchnumber, #info {
+    float: left;
+    font-size: 10pt;
+    margin: 2px;
+    color: #aaa;
+}
+
+#info {
+    float: none;
+}
+
+#searchnumber {
+    float: right;
+}
+
+.searched {
+    color: #f00;
+}
+
+.ui-corner-all {
+    -moz-border-radius: 6px;
+    -khtml-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}

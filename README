@@ -1,0 +1,72 @@
+PHPLogViewer
+https://github.com/korylprince/PHPLogViewer
+
+########################
+#      Installing      #
+########################
+
+This was installed on a server running Ubuntu 10.04. It should work on any machine as long as it is running a webserver and PHP (5+).
+If you are using a different authentication method, you may need something more. Check the PHPAuth requirements here:
+https://github.com/korylprince/PHPAuth
+
+If you are running this on a windows box, you need to edit the commands and find a replacement for grep, tail, sed, etc.
+
+Simply copy the PHPLogViewer folder to your web directory and edit auth/options for authentication options and auth/logviewer.php for your list of logs.
+Then simply navigate to your website and login. 
+
+If you have any issues or questions, email the email address below, or open an issue at:
+https://github.com/korylprince/PHPLogViewer/issues
+
+###########################
+#          Usage          #
+###########################
+
+This distribution is a simple web interface for checking looking at log files.
+The default username/password is administrator/admin.
+
+You can select the log type from the select box in the top left.
+You can search the log with the textbox.
+You can set the amount of lines to show with the select box in the middle.
+You can set the page to autorefresh for different amounts of time.
+The "AutoRefresh" text acts as a toggle switch. If it is red then autorefresh is activated.
+
+If you wish to change authentication (say for AD integration) then edit auth/options.php.
+
+To add or edit logs, you need to edit the $validTypes array in auth/logviewer.php.
+
+An entry in the array looks like:
+"entryname"=>array("command when all lines should be shown","command when set amount of lines should be shown")
+In addition, each of the commands should include the text "<search>" where the search term from the user will be inserted.
+"<lines>" should be in the second command where the user will specify the number of lines to show.
+
+The default config is for a DNS/DHCP server.
+
+If you wish to add or delete types, you must do so in logviewer.php but also in main.php (Delete or add the options to the select.)
+To edit the autorefresh times simply edit main.php and add the options to the select.
+
+This builds upon the "PHPAuth" Library:
+https://github.com/korylprince/PHPAuth
+The authentication can be extend using that library. Note: sessions must be used.
+
+###########################
+#  Copyright Information  #
+###########################
+
+jQuery and jQuery UI are produced by the jQuery team: http://jquery.com/ and http://jqueryui.com/
+session_lib.php was taken from the PHP manual: http://php.net/manual/en/function.session-set-save-handler.php
+All other code is Copyright 2011 Kory Prince (korylprince at gmail dot com.) This code is licensed under the GPL v3 which is included in this distribution.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+

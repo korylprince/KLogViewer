@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Please Login</title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="jquery.cookie.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/flick/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <link href="main.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body style="background-color: #fff;">
+        <div id="wrapper">
+            <div id="header" class="ui-widget ui-corner-all">Please Login</div>
+            <div id="loginboxwrapper" class="ui-widget ui-corner-all">
+                <div id="loginbox" class="ui-widget-content ui-corner-all">
+                    Username:<br />
+                    <input type="text" name="username" class="ui-state-default" onkeypress="if(event.keyCode==13){$('#submitbutton').trigger('click');}"/><br />
+                    Password:<br />
+                    <input type="password" name="password"  class="ui-state-default" onkeypress="if(event.keyCode==13){$('#submitbutton').trigger('click');}"/><br />
+                    <button id="submitbutton">Submit</button>
+                </div>
+            </div>
+            <div id="errorboxwrapper" class="ui-widget ui-corner-all">
+                <div id="errorbox" class="ui-widget-content ui-corner-all">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
