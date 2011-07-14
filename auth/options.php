@@ -1,4 +1,5 @@
 <?php
+//AUTH OPTIONS//
 /*type - ldap_ad (Active Directory), al (Access List - JSON encoded file with usernames), dl(Deny List - JSON encoded file with usernames), password_file (JSON encoded file with username / password hash), session (Use PHP sessions to only allow login session), admincheck (returns an admin flag if administrator is username) */
 /* session, dl, and al(absence of username) take precedence over others. You should put these first. */
 $types = array('password_file','session'); # Can be any of the allowed options or a group of them. Required.
@@ -29,4 +30,24 @@ $options['sessionLibrary'] = 'session_lib.php'; #Optional session functions to u
 /* Password Salting and Hashing*/
 $options['passwordSalt'] = '$at-least-14-characters!'; #A string to use for password salting. Recommended.
 $options['hashFunction'] = 'md5'; #Specify the hashing function for passwords. Must return a hash value. Default is md5.
+
+//LOG VIEWER OPTIONS//
+/*
+For simple log files add an entry like:
+array('name'=>'<shortname>','description'=>'<Description>','form'=>array('log','<log location>'))
+If you want to create a custom command use:
+array('name'=>'<shortname>','description'=>'<Description>','form'=>array('<line command>'))
+The <line command> is the command that will show a given amount of lines of whatever output you want. "<lines>" will be replaced by the user given amount of lines. If you include "<search>" in this command it will be replaced by a user given search. 
+*/
+$validTypes = array(
+    array('name'=>'dns','description'=>'DNS','form'=>array('dig axfr example.com|grep -v TXT|tail -n <lines> |grep -i "<search>"')),
+    array('name'=>'dnslog','description'=>'DNS Log','form'=>array('log','/var/log/bind.log')),
+    array('name'=>'dhcp','description'=>'DHCP Log','form'=>array('log','/var/log/dhcp.log'))
+);
+//Define what times you want in refresh times
+$refreshValues = array(1,5,10);
+//Define what line counts you want - highest value is the most the server will allow.
+$lineValues = array(10,50,100,1000);
+//Text to put in the footer
+$footer = 'Sample Footer Text - ';
 ?>

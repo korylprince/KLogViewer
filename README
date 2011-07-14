@@ -11,7 +11,7 @@ https://github.com/korylprince/PHPAuth
 
 If you are running this on a windows box, you need to edit the commands and find a replacement for grep, tail, sed, etc.
 
-Simply copy the PHPLogViewer folder to your web directory and edit auth/options for authentication options and auth/logviewer.php for your list of logs.
+Simply copy the PHPLogViewer folder to your web directory and edit auth/options for authentication options and for your list of logs.
 Then simply navigate to your website and login. 
 
 If you have any issues or questions, email the email address below, or open an issue at:
@@ -32,17 +32,12 @@ The "AutoRefresh" text acts as a toggle switch. If it is red then autorefresh is
 
 If you wish to change authentication (say for AD integration) then edit auth/options.php.
 
-To add or edit logs, you need to edit the $validTypes array in auth/logviewer.php.
-
-An entry in the array looks like:
-"entryname"=>array("command when all lines should be shown","command when set amount of lines should be shown")
-In addition, each of the commands should include the text "<search>" where the search term from the user will be inserted.
-"<lines>" should be in the second command where the user will specify the number of lines to show.
+To add or edit logs, you need to edit the $validTypes array in auth/options.php.
+Read the comments to learn how to add your own.
 
 The default config is for a DNS/DHCP server.
 
-If you wish to add or delete types, you must do so in logviewer.php but also in main.php (Delete or add the options to the select.)
-To edit the autorefresh times simply edit main.php and add the options to the select.
+You can specify the refresh times and line amounts in auth/options.php
 
 This builds upon the "PHPAuth" Library:
 https://github.com/korylprince/PHPAuth
@@ -68,5 +63,3 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-

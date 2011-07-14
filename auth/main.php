@@ -33,13 +33,25 @@ if($login['Login'] != "True"){
     </head>
     <body>
         <div id="topform">
-            <select id="logselect"><option value="dns">DNS</option><option value="dnslog">DNS Log</option><option value="dhcp">DHCP Log</option></select>
+            <select id="logselect"><?php
+foreach ($validTypes as $validType) {
+    echo '<option value="'.$validType['name'].'">'.$validType['description'].'</option>';
+}
+?></select>
             Search: <input id="searchtext" type="text"  onkeypress="if(event.keyCode==13){$('#searchsubmit').trigger('click');}" /><button id="searchsubmit">Submit</button>
-            Lines: <select id="lines"><option value=10>10</option><option value=50>50</option><option value=100>100</option><option selected value=1000>1000</option><option value=10000>10000</option><option value="all">All</option></select>
-            <span id="autotext" title="Click to toggle AutoRefresh">AutoRefresh:</span> <select id="autoselect"><option value="no">No</option><option value="1">1 s</option><option value="5">5 s</option><option value="10">10 s</option></select>
+            Lines: <select id="lines"><?php
+foreach ($lineValues as $value) {
+    echo '<option value="'.$value.'">'.$value.'</option>';
+}
+?><option value="all">All</option></select>
+            <span id="autotext" title="Click to toggle AutoRefresh">AutoRefresh:</span> <select id="autoselect"><option value="no">No</option><?php
+foreach ($refreshValues as $value) {
+    echo '<option value="'.$value.'">'.$value.' sec</option>';
+}
+?></select>
             <button id="logoutbutton">Logout</button>
         </div>
         <pre id="content"></pre>
-<span id="linenumber"></span><span id="info">Bullard ISD Log Viewer - <?php echo shell_exec('hostname -f'); ?></span><span id="searchnumber"></span>
+<span id="linenumber"></span><span id="info"><?php echo $footer.shell_exec('hostname -f'); ?></span><span id="searchnumber"></span>
     </body>
 </html>
