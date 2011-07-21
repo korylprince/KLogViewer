@@ -11,7 +11,7 @@ https://github.com/korylprince/PHPAuth
 
 If you are running this on a windows box, you need to edit the commands and find a replacement for grep, tail, sed, etc.
 
-Simply copy the PHPLogViewer folder to your web directory and edit auth/options for authentication options and for your list of logs.
+Simply copy the PHPLogViewer folder to your web directory, copy auth/options.php.def to auth/options.php and edit it for authentication options and for your list of logs.
 Then simply navigate to your website and login. 
 
 If you have any issues or questions, email the email address below, or open an issue at:

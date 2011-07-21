@@ -30,7 +30,8 @@ function submit(jsondata) {
         success: function(returndata){
             if (returndata.Login == "True") {
                 //Set the cookie. Path is required for using in /auth/ subtext
-                $.cookie("sessionID",returndata.data.sessionID, { path: "/" });
+                var cookiepath = window.location.pathname.substr(0,window.location.pathname.lastIndexOf("/"));
+                $.cookie("sessionID",returndata.data.sessionID, { path: cookiepath });
                 window.location = "auth/main.php";
             }
             else if (returndata.Login == "Restricted") {
@@ -51,8 +52,12 @@ function submit(jsondata) {
 
 //If sessionID is already set in cookies go ahead and forward to page
 function checkCookie() {
-    if ($.cookie("sessionID")){
+    if ($.cookie("sessionID") & !$.cookie("logout")){
         window.location = "auth/main.php";
+    }
+    else {
+        $.cookie("sessionID",null);
+        $.cookie("logout",null);
     }
 }
 

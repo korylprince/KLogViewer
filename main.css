@@ -65,6 +65,15 @@ body {
     float: left;
 }
 
+#ajaxloader {
+    float: left;
+    width: 0px;
+}
+
+#ajaxloader img {
+    margin: 5px;
+}
+
 #searchsubmit, #lines {
     margin-right: 10px;
 }

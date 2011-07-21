@@ -1,7 +1,8 @@
 <?php
 //Make sure that either logout or sessionID is set. Deletes cookie and forwards to index
 if(!isset($_COOKIE['sessionID']) or isset($_GET['logout'])) {
-    setcookie('sessionID', '', 1,'/');
+    $cookiepath = explode('/auth',$_SERVER['REQUEST_URI']);
+    setcookie('logout', True, 1,$cookiepath[0]);
     echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=../">';
     return 0;
 }
@@ -16,7 +17,8 @@ $login = authenticate(null,null,$types,$options);
 //echo json_encode($login);return 0;//debug
 //If user does not authenticate delete cookie and forward to index
 if($login['Login'] != "True"){
-    setcookie('sessionID', '', 1,'/');
+    $cookiepath = explode('/auth',$_SERVER['REQUEST_URI']);
+    setcookie('logout', True, 1,$cookiepath[0]);
     echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=../">';
     return 0;
 }
@@ -37,13 +39,13 @@ if($login['Login'] != "True"){
 foreach ($validTypes as $validType) {
     echo '<option value="'.$validType['name'].'">'.$validType['description'].'</option>';
 }
-?></select>
+?></select><div id="ajaxloader"><img src="../ajax.gif" /></div>
             Search: <input id="searchtext" type="text"  onkeypress="if(event.keyCode==13){$('#searchsubmit').trigger('click');}" /><button id="searchsubmit">Submit</button>
             Lines: <select id="lines"><?php
 foreach ($lineValues as $value) {
     echo '<option value="'.$value.'">'.$value.'</option>';
 }
-?><option value="all">All</option></select>
+?></select>
             <span id="autotext" title="Click to toggle AutoRefresh">AutoRefresh:</span> <select id="autoselect"><option value="no">No</option><?php
 foreach ($refreshValues as $value) {
     echo '<option value="'.$value.'">'.$value.' sec</option>';

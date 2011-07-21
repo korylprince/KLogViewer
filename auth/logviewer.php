@@ -17,8 +17,8 @@ if($login['Login'] != "True"){
 }
 //Function that does the heavy lifting
 function showLog($type,$search,$lines,$validTypes,$lineValues) {
-    //Make sure lines is all or actually a number
-    if (($lines != 'all' and !is_numeric($lines)) or $lines > max($lineValues) ) {
+    //Make sure lines is actually a number
+    if (!is_numeric($lines) or $lines > max($lineValues) ) {
         echo '["Parameters are wrong.",0,0]';
         return 1;
     }

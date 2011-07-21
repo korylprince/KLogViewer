@@ -36,6 +36,14 @@ $(document).ready(function() {
             clearTimeout(t);
         }
     });
+    $("#ajaxloader")
+    .hide()  // hide it initially
+    .ajaxStart(function() {
+        $(this).show();
+    })
+    .ajaxStop(function() {
+        $(this).hide();
+    });
 });
 
 //Function to run on page load to get previous values from a cookie
