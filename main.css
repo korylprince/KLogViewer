@@ -33,8 +33,7 @@ body {
 }
 
 #errorboxwrapper {
-    display: inline-block;
-    width: auto;
+    display: none;
 }
 
 #loginbox {
@@ -51,7 +50,6 @@ body {
 #errorbox {
     padding: 5px;
     margin: 15px;
-    display: inline-block;
     font-size: 12pt;
 }
 

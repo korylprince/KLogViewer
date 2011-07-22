@@ -1,8 +1,6 @@
 //Function to run on page load.
 $(document).ready(function() {
     checkCookie();
-    //Hide the error box
-    $("#errorbox").fadeOut(0);
     $("#submitbutton").button();
     //To make the boxes show active state
     $('input').click(function() {
@@ -45,7 +43,7 @@ function submit(jsondata) {
             }
         },
         error: function() {
-            alert("Error! Contact Your System Administrator!");
+            showError("Error! Contact Your System Administrator!");
         }
     });
 }
@@ -63,13 +61,13 @@ function checkCookie() {
 
 //Shows box at bottom of page with any error message
 function showError(error) {
-    $("#errorbox").hide();
+    $("#errorboxwrapper").hide();
     $("#errorbox").html(error);
-    $("#errorbox").fadeIn();
+    $("#errorboxwrapper").fadeIn();
     var t=setTimeout("hideError()", 7000);  
 }
 
 //Function to call to hide error
 function hideError() {
-    $("#errorbox").fadeOut();
+    $("#errorboxwrapper").fadeOut();
 }

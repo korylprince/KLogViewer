@@ -93,7 +93,9 @@ function refresh() {
         },
         //If there is some strange error
         error: function() {
-            alert("Error! Contact Your System Administrator!");
+            $("#content").html("Error");
+            $("#linenumber").html("Error");
+            $("#searchnumber").html("Error");
         }
     });
 }
