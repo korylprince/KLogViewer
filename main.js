@@ -39,7 +39,7 @@ function submit(jsondata) {
                 showError("Unknown Error! Error Code: "+returndata.errorCode);
             }
             else {
-                showError("Unknown Error! Error Code: "+returndata);
+                showError("Unknown Error! Error Code: "+returndata.Login);
             }
         },
         error: function() {
