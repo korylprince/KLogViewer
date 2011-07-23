@@ -11,6 +11,7 @@ body {
     top: 50%;
     margin-left: -200px;
     margin-top: -200px;
+    width: 400px;
 }
 
 #header {
