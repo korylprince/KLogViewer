@@ -39,7 +39,7 @@ if($login['Login'] != "True"){
 foreach ($validTypes as $validType) {
     echo '<option value="'.$validType['name'].'">'.$validType['description'].'</option>';
 }
-?></select><div id="ajaxloader"><img src="../ajax.gif" /></div>
+?></select><div id="ajaxloader"><img src="../ajax.gif" alt="Loading..." /></div>
             Search: <input id="searchtext" type="text"  onkeypress="if(event.keyCode==13){$('#searchsubmit').trigger('click');}" /><button id="searchsubmit">Submit</button>
             Lines: <select id="lines"><?php
 foreach ($lineValues as $value) {
