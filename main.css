@@ -55,9 +55,11 @@ body {
 }
 
 #topform {
+    position: relative;
     height: 35px;
     width: 100%;
     border-bottom: 1px solid #000;
+    margin-top: 0px;
 }
 
 #logselect {
@@ -78,7 +80,12 @@ body {
 }
 
 #logoutbutton {
+    position: absolute;
+    right: 0;
+    top: 0;
     float: right;
+    width: 60px;
+
 }
 
 #content {
@@ -90,6 +97,11 @@ body {
     overflow: auto;
     background-color: #fff;
     border: 1px solid #ddd;
+}
+
+#footer {
+    position: relative;
+    margin-bottom: 0px;
 }
 
 #linenumber, #searchnumber, #info {
@@ -104,7 +116,10 @@ body {
 }
 
 #searchnumber {
+    position: absolute;
     float: right;
+    right: 0;
+    top: 0;
 }
 
 .searched {

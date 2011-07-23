@@ -50,12 +50,13 @@ function submit(jsondata) {
 
 //If sessionID is already set in cookies go ahead and forward to page
 function checkCookie() {
-    if ($.cookie("sessionID") & !$.cookie("logout")){
+    if ($.cookie("sessionID") && $.cookie("logout") == null){
         window.location = "auth/main.php";
     }
     else {
-        $.cookie("sessionID",null);
-        $.cookie("logout",null);
+        var cookiepath = window.location.pathname.substr(0,window.location.pathname.lastIndexOf("/"));
+        $.cookie("sessionID",null, { path: cookiepath });
+        $.cookie("logout",null, { path: cookiepath });
     }
 }
 

@@ -2,7 +2,7 @@
 //Make sure that either logout or sessionID is set. Deletes cookie and forwards to index
 if(!isset($_COOKIE['sessionID']) or isset($_GET['logout'])) {
     $cookiepath = explode('/auth',$_SERVER['REQUEST_URI']);
-    setcookie('logout', True, 1,$cookiepath[0]);
+    setcookie('logout', True, time()+3600,$cookiepath[0]);
     echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=../">';
     return 0;
 }
@@ -18,7 +18,7 @@ $login = authenticate(null,null,$types,$options);
 //If user does not authenticate delete cookie and forward to index
 if($login['Login'] != "True"){
     $cookiepath = explode('/auth',$_SERVER['REQUEST_URI']);
-    setcookie('logout', True, 1,$cookiepath[0]);
+    setcookie('logout', True, time()+3600,$cookiepath[0]);
     echo '<META HTTP-EQUIV="refresh" CONTENT="0;URL=../">';
     return 0;
 }
@@ -54,6 +54,8 @@ foreach ($refreshValues as $value) {
             <button id="logoutbutton">Logout</button>
         </div>
         <pre id="content"></pre>
-<span id="linenumber"></span><span id="info"><?php echo $footer.shell_exec('hostname -f'); ?></span><span id="searchnumber"></span>
+        <div id="footer">
+            <span id="linenumber"></span><span id="info"><?php echo $footer.shell_exec('hostname -f'); ?></span><span id="searchnumber"></span>
+        </div>
     </body>
 </html>

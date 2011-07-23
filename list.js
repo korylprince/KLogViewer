@@ -7,12 +7,14 @@ $(document).ready(function() {
     });
     //If Autorefresh is red then clear the timer and turn off refresh. Otherwise make it red and refresh if there is a time set.
     $("#autotext").click(function(){
-        if ($("#autotext").css("color") == "rgb(255, 0, 0)") {
+        if ($("#autotext").data("on")) {
             $("#autotext").css("color","#000");
+            $("#autotext").data("on",false);
             clearTimeout(t);
         }
         else {
             $("#autotext").css("color","#f00");
+            $("#autotext").data("on",true);
             if ($("#autoselect").val() != "no") {
                 refresh();
             }
@@ -20,6 +22,9 @@ $(document).ready(function() {
     });
     //Set the window to the right size.
     $("#content").height($(window).height() - 80);
+    if ($.browser.msie) {
+        $("#content").height($(window).height() - 92);
+    }
     checkCookie();
     //If the user changes something refresh
     $("#logselect").change(function(){refresh();});
@@ -29,10 +34,12 @@ $(document).ready(function() {
     $("#autoselect").change(function(){
         if ($("#autoselect").val() != "no") {
             $("#autotext").css("color","#f00");
+            $("#autotext").data("on",true);
             refresh();
         }
         else {
             $("#autotext").css("color","#000");
+            $("#autotext").data("on",false);
             clearTimeout(t);
         }
     });
@@ -65,7 +72,7 @@ function refresh() {
     //Clear the timeout first to make sure there is no buildup.
     clearTimeout(t);
     //For Autorefresh - if autorefresh is on and there is a time set, set a timeout to run
-    if ($("#autoselect").val() != "no" & $("#autotext").css("color") == "rgb(255, 0, 0)") {
+    if ($("#autoselect").val() != "no" & $("#autotext").data("on") == true) {
         t = setTimeout("refresh();",$("#autoselect").val() * 1000);
     }
     //Get the json from the UI, then set the cookies
@@ -86,7 +93,7 @@ function refresh() {
             }
             //Otherwise update the UI
             else {
-                $("#content").html(returndata[0]);
+                $("#content").html(returndata[0].replace(/\n/g,"<br />"));
                 $("#linenumber").html("Lines: "+returndata[1]);
                 $("#searchnumber").html("Search Found: "+returndata[2]);
             }
