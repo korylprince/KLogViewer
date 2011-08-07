@@ -5,7 +5,7 @@ https://github.com/korylprince/PHPLogViewer
 #      Installing      #
 ########################
 
-This was installed on a server running Ubuntu 10.04. It should work on any machine as long as it is running a webserver and PHP (5+).
+This was installed on a server running Ubuntu 11.04. It should work on any machine as long as it is running a webserver and PHP (5+).
 If you are using a different authentication method, you may need something more. Check the PHPAuth requirements here:
 https://github.com/korylprince/PHPAuth
 
@@ -37,11 +37,11 @@ Read the comments to learn how to add your own.
 
 The default config is for a DNS/DHCP server.
 
-You can specify the refresh times and line amounts in auth/options.php
+You can specify the refresh times and line amounts and their defaults in auth/options.php
 
 This builds upon the "PHPAuth" Library:
 https://github.com/korylprince/PHPAuth
-The authentication can be extend using that library. Note: sessions must be used.
+The authentication can be extended using that library. Note: sessions must be used.
 
 ###########################
 #  Copyright Information  #

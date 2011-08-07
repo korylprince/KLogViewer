@@ -15,9 +15,7 @@ $(document).ready(function() {
         else {
             $("#autotext").css("color","#f00");
             $("#autotext").data("on",true);
-            if ($("#autoselect").val() != "no") {
                 refresh();
-            }
         }
     });
     //Set the window to the right size.
@@ -32,16 +30,9 @@ $(document).ready(function() {
     $("#searchsubmit").click(function(){refresh();});
     //If autorefresh is changed check the color and value
     $("#autoselect").change(function(){
-        if ($("#autoselect").val() != "no") {
-            $("#autotext").css("color","#f00");
-            $("#autotext").data("on",true);
-            refresh();
-        }
-        else {
-            $("#autotext").css("color","#000");
-            $("#autotext").data("on",false);
-            clearTimeout(t);
-        }
+        $("#autotext").css("color","#f00");
+        $("#autotext").data("on",true);
+        refresh();
     });
     $("#ajaxloader")
     .hide()  // hide it initially
@@ -61,7 +52,7 @@ function checkCookie() {
     if ($.cookie("search")) {
         $("#searchtext").val($.cookie("search"));
     }
-    if ($.cookie("type")) {
+    if ($.cookie("lines")) {
         $("#lines").val($.cookie("lines"));
     }
     refresh();
@@ -72,7 +63,7 @@ function refresh() {
     //Clear the timeout first to make sure there is no buildup.
     clearTimeout(t);
     //For Autorefresh - if autorefresh is on and there is a time set, set a timeout to run
-    if ($("#autoselect").val() != "no" & $("#autotext").data("on") == true) {
+    if ($("#autotext").data("on") == true) {
         t = setTimeout("refresh();",$("#autoselect").val() * 1000);
     }
     //Get the json from the UI, then set the cookies

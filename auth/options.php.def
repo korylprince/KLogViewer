@@ -38,16 +38,44 @@ array('name'=>'<shortname>','description'=>'<Description>','form'=>array('log','
 If you want to create a custom command use:
 array('name'=>'<shortname>','description'=>'<Description>','form'=>array('<line command>'))
 The <line command> is the command that will show a given amount of lines of whatever output you want. "<lines>" will be replaced by the user given amount of lines. If you include "<search>" in this command it will be replaced by a user given search. 
+
+To add coloring, add a color array to the log entry array like:
+'color'=>array(<regular expression1>=><css-color1>,<regular expression2>=><css-color3>,...
+See below for examples.
 */
 $validTypes = array(
-    array('name'=>'dns','description'=>'DNS','form'=>array('dig axfr example.com|grep -v TXT|tail -n <lines> |grep -i "<search>"')),
-    array('name'=>'dnslog','description'=>'DNS Log','form'=>array('log','/var/log/bind.log')),
-    array('name'=>'dhcp','description'=>'DHCP Log','form'=>array('log','/var/log/dhcp.log'))
+    array('name'=>'dhcp','description'=>'DHCP Log','form'=>array('log','/var/log/dhcp.log'),'color'=>
+        array(
+            "/.*dhcpd/"=>'#fa0',//date
+            "/DHCP(REQUEST|INFORM|DISCOVER)/"=>'#0a0',//Client to server Types
+            "/DHCP(ACK|OFFER)/"=>'#0f0',//server to client types
+            "/DHCP(NAK|DECLINE)/"=>'#f00',//'bad' types
+            "/([0-9]{1,3}\.){3}[0-9]{1,3}/"=>'#04b',//IP addresss
+            '/([0-9a-f]{2}:){5}[0-9a-f]{2}/'=>'#207',//hostnames
+            "/(?<=\()[^:]*(?=\))/"=>'#a0a'//mac addresses
+        )),
+    array('name'=>'dns','description'=>'DNS','form'=>array('dig axfr example.com|grep -v TXT|grep -i "<search>"|tail -n <lines>'),'color'=>
+        array(
+            "/[a-zA-Z0-9_.-]*\.(?=\s[0-9]*)/"=>'#a0a',//hostnames
+            "/[0-9]*(?=\sIN)/"=>'#0f0',//TTL
+            "/\sIN/"=>'#fa0',//IN class
+            "/[^\s]*$/"=>'#f0f',//Record value
+            "/\s(A|CNAME|NS|SOA|MX|SRV)\s/"=>'#f00',//record type
+            '/([0-9]{1,3}\.){3}[0-9]{1,3}/'=>'#04b'//IP Addresses
+        )),
+    array('name'=>'dnslog','description'=>'DNS Log','form'=>array('log','/var/log/bind.log'),'color'=>
+        array(
+            "/.*named\[[0-9]*?\]:/"=>'#fa0',//date
+            "/(update-security|lame-servers):/"=>'#f00',//errors
+            "/update:/"=>'#00f',//updates
+            "/(xfer-out|notify|general):/"=>'#0f0',//xfers,notifies, and general entries
+            '/([0-9]{1,3}\.){3}[0-9]{1,3}/'=>'#a0a'//IP address
+        ))
 );
-//Define what times you want in refresh times
-$refreshValues = array(1,5,10);
-//Define what line counts you want - highest value is the most the server will allow.
-$lineValues = array(10,50,100,1000);
+//Define what times you want in refresh times. You can set a default by using 'default'=><defaulttime>
+$refreshValues = array('default'=>1,5,10);
+//Define what line counts you want - highest value is the most the server will allow. You can set a default by using 'default'=><defaultlines>
+$lineValues = array(10,'default'=>50,100,1000,2000);
 //Text to put in the footer
 $footer = 'Sample Footer Text - ';
 ?>

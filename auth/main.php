@@ -42,13 +42,25 @@ foreach ($validTypes as $validType) {
 ?></select><div id="ajaxloader"><img src="../ajax.gif" alt="Loading..." /></div>
             Search: <input id="searchtext" type="text"  onkeypress="if(event.keyCode==13){$('#searchsubmit').trigger('click');}" /><button id="searchsubmit">Submit</button>
             Lines: <select id="lines"><?php
+$key = $lineValues['default'];
 foreach ($lineValues as $value) {
-    echo '<option value="'.$value.'">'.$value.'</option>';
+    if ($value == $key) {
+        echo '<option value="'.$value.'" selected="selected">'.$value.'</option>';
+    }
+    else {
+        echo '<option value="'.$value.'">'.$value.'</option>';
+    }
 }
 ?></select>
-            <span id="autotext" title="Click to toggle AutoRefresh">AutoRefresh:</span> <select id="autoselect"><option value="no">No</option><?php
+            <span id="autotext" title="Click to toggle AutoRefresh">AutoRefresh:</span> <select id="autoselect"><?php
+$key = $refreshValues['default'];
 foreach ($refreshValues as $value) {
-    echo '<option value="'.$value.'">'.$value.' sec</option>';
+    if ($value == $key) {
+        echo '<option value="'.$value.'" selected="selected">'.$value.' sec</option>';
+    }
+    else {
+        echo '<option value="'.$value.'">'.$value.' sec</option>';
+    }
 }
 ?></select>
             <button id="logoutbutton">Logout</button>

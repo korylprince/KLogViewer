@@ -27,6 +27,8 @@ function showLog($type,$search,$lines,$validTypes,$lineValues) {
     foreach ($validTypes as $validType) {
         $types[] = $validType['name'];
     }
+    //global declartion of key
+    $key = 0;
     //Make sure type is one that really exists
     if (in_array($type,$types)) {
         $key = array_search($type,$types);
@@ -48,6 +50,13 @@ function showLog($type,$search,$lines,$validTypes,$lineValues) {
     }
     //Execute the command and get the return
     $text = shell_exec($cmd);
+    //Do Coloration if given
+    if (isset($validTypes[$key]['color'])) {
+        foreach ($validTypes[$key]['color'] as $reg=>$color) {
+            //$text = preg_replace($reg,'<span style="color:'.$color.'>'.$reg.'</span>',$text);
+            $text = preg_replace($reg,'<span style="color:'.$color.';">'."\${0}".'</span>',$text);
+        }
+    }
     //If search was given then encase the search with spans. Find the line and possibly the search counts.
     if ($search != '') {
         $text = str_ireplace($search,'<span class="searched">'.$search.'</span>',$text);
