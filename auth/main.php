@@ -11,8 +11,8 @@ else {
     $options['sessionID'] = $_COOKIE['sessionID'];
 }
 //Call library
-require_once('options.php');
-include('authlib.php');
+require('options.php');
+require('authlib.php');
 $login = authenticate(null,null,$types,$options);
 //echo json_encode($login);return 0;//debug
 //If user does not authenticate delete cookie and forward to index

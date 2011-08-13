@@ -22,8 +22,8 @@
       $username = $_POST['username'];
       $password = $_POST['password'];
   }
-  require_once('options.php');
-  include('authlib.php');
+  require('options.php');
+  require('authlib.php');
   $login = authenticate($username, $password, $types, $options);
   echo json_encode($login);
   return 1;

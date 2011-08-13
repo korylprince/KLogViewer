@@ -6,8 +6,8 @@ if (!isset($_POST['type']) or !isset($_POST['search']) or !isset($_POST['lines']
 }
 //Get sessionID from post and authenticate
 $options['sessionID'] = $_POST['sessionID'];
-require_once('options.php');
-include('authlib.php');
+require('options.php');
+require('authlib.php');
 $login = authenticate(null,null,$types,$options);
 //echo json_encode($login);return 0;//debug
 //If user does not authenticate send JSON that says so
