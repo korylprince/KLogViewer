@@ -1,21 +1,21 @@
-PHPLogViewer
-https://github.com/korylprince/PHPLogViewer
+KLogViewer
+https://github.com/korylprince/KLogViewer
 
 ########################
 #      Installing      #
 ########################
 
 This was installed on a server running Ubuntu 11.04. It should work on any machine as long as it is running a webserver and PHP (5+).
-If you are using a different authentication method, you may need something more. Check the PHPAuth requirements here:
-https://github.com/korylprince/PHPAuth
+If you are using a different authentication method, you may need something more. Check the KAuth requirements here:
+https://github.com/korylprince/KAuth
 
 If you are running this on a windows box, you need to edit the commands and find a replacement for grep, tail, sed, etc.
 
-Simply copy the PHPLogViewer folder to your web directory, copy auth/options.php.def to auth/options.php and edit it for authentication options and for your list of logs.
+Simply copy the KLogViewer folder to your web directory, copy auth/options.php.def to auth/options.php and edit it for authentication options and for your list of logs.
 Then simply navigate to your website and login. 
 
 If you have any issues or questions, email the email address below, or open an issue at:
-https://github.com/korylprince/PHPLogViewer/issues
+https://github.com/korylprince/KLogViewer/issues
 
 ###########################
 #          Usage          #
@@ -39,8 +39,8 @@ The default config is for a DNS/DHCP server.
 
 You can specify the refresh times and line amounts and their defaults in auth/options.php
 
-This builds upon the "PHPAuth" Library:
-https://github.com/korylprince/PHPAuth
+This builds upon the "KAuth" Library:
+https://github.com/korylprince/KAuth
 The authentication can be extended using that library. Note: sessions must be used.
 
 ###########################
