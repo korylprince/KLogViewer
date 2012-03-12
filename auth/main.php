@@ -28,7 +28,7 @@ if($login['Login'] != "True"){
     <head>
         <meta charset="utf-8" />
         <title><?php echo shell_exec('hostname -f'); ?> - Logs</title>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script type="text/javascript" src="../list.js"></script>
         <script type="text/javascript" src="../jquery.cookie.js"></script>
         <link href="../main.css" rel="stylesheet" type="text/css" />
