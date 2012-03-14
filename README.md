@@ -10,6 +10,9 @@ https://github.com/korylprince/KAuth
 If you are running this on a windows box, you need to edit the commands and find a replacement for grep, tail, sed, etc.
 
 Simply copy the KLogViewer folder to your web directory, copy auth/options.php.def to auth/options.php and edit it for authentication options and for your list of logs.
+
+If you just want a single login, copy auth/users.list.def to auth/users.list. You can use auth/mkpasswd.php to change the password. See https://github.com/korylprince/KAuth for usage.
+
 Then navigate to your website and login. 
 
 If you have any issues or questions, email the email address below, or open an issue at:
